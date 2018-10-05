@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<link rel="stylesheet" href="/sass/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://sebortiz.com/">Sebastian Ortiz&#39;s blog</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://sebortiz.com/pages/about/">About</a></li>
+        <li><a href="http://sebortiz.com/pages/contact/">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="https://github.com/bul-ikana/hugo-cards">Project</a></li>
+            <li><a href="https://github.com/bul-ikana/hugo-cards.git">Download</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a target="_blank" href="https://themes.gohugo.io/">More Themes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+
+
+    <div class="container">
+      <div class="wrapper">
+        
+<div class="row">
+<div class="col-md-8">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">Using the jaeger agent as a sidecar process in ECS</h1>
+            <p class="post-meta"><time datetime='2018-10-05T14:56:34-07:00' itemprop="datePublished">October 5, 2018</time></p>
+                 
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>When deploying a microservice on Amazon ECS that you want to trace with jaeger, it may not be immediately clear how to package the jaeger agent as a sidecar process with your service. I&rsquo;m not sure that what I&rsquo;ve used is a recommended practice but has worked well thus far.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">29
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#960050;background-color:#1e0010">#</span>!<span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bash</span>
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Start</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">jaeger</span> <span style="color:#a6e22e">agent</span>
+<span style="color:#f92672">/</span><span style="color:#a6e22e">jaeger</span><span style="color:#f92672">-</span><span style="color:#a6e22e">agent</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">collector</span>.<span style="color:#a6e22e">host</span><span style="color:#f92672">-</span><span style="color:#a6e22e">port</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">JAEGER_COLLECTOR_HOST_PORT</span> <span style="color:#ae81ff">2</span>&gt;<span style="color:#f92672">&amp;</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">/</span><span style="color:#66d9ef">var</span><span style="color:#f92672">/</span><span style="color:#a6e22e">log</span><span style="color:#f92672">/</span><span style="color:#a6e22e">jaeger</span><span style="color:#f92672">-</span><span style="color:#a6e22e">agent</span>.<span style="color:#a6e22e">log</span> <span style="color:#f92672">&amp;</span>
+<span style="color:#a6e22e">JAEGER_PID</span>=<span style="color:#960050;background-color:#1e0010">$</span>!
+
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Start</span> <span style="color:#a6e22e">asset</span> <span style="color:#a6e22e">selection</span>
+<span style="color:#f92672">/</span><span style="color:#a6e22e">my_service</span> <span style="color:#f92672">&amp;</span>
+<span style="color:#a6e22e">MY_SERVICE_PID</span>=<span style="color:#960050;background-color:#1e0010">$</span>!
+
+<span style="color:#a6e22e">function</span> <span style="color:#a6e22e">shutdown</span>() {
+    <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Shutdown</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">jager</span> <span style="color:#a6e22e">agent</span> <span style="color:#a6e22e">without</span> <span style="color:#a6e22e">waiting</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">complete</span>
+    <span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;Stopping jaeger agent&#34;</span>
+    <span style="color:#a6e22e">kill</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">JAEGER_PID</span>
+
+    <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Shutdown</span> <span style="color:#a6e22e">assetselection</span> <span style="color:#a6e22e">cleanly</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">wait</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">shutdown</span>.
+    <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">If</span> <span style="color:#a6e22e">my_service</span> <span style="color:#a6e22e">shuts</span> <span style="color:#a6e22e">down</span> <span style="color:#a6e22e">within</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">stop</span> <span style="color:#a6e22e">shutdown</span> <span style="color:#a6e22e">time</span> <span style="color:#a6e22e">the</span>
+    <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">exit</span> <span style="color:#a6e22e">code</span> <span style="color:#a6e22e">will</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">exit</span> <span style="color:#a6e22e">code</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">my_service</span>
+    <span style="color:#a6e22e">echo</span> <span style="color:#e6db74">&#34;Shutting down my_service&#34;</span>
+    <span style="color:#a6e22e">kill</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">MY_SERVICE_PID</span>
+    <span style="color:#a6e22e">wait</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">MY_SERVICE_PID</span>
+    <span style="color:#a6e22e">exit</span> <span style="color:#960050;background-color:#1e0010">$?</span>
+
+}
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">shutdown</span> <span style="color:#a6e22e">fuction</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">SIGTERM</span> (<span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">stop</span>)
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">shutdown</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">SIGINT</span> (<span style="color:#a6e22e">testing</span>)
+<span style="color:#a6e22e">trap</span> <span style="color:#a6e22e">shutdown</span> <span style="color:#a6e22e">SIGTERM</span> <span style="color:#a6e22e">SIGINT</span>
+
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">Wait</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">my_service</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">exit</span>
+<span style="color:#a6e22e">wait</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">MY_SERVICE_PID</span></code></pre></td></tr></table>
+</div>
+</div>
+
+          </div>
+
+    </article>
+    <div class="row">
+        
+    </div>
+    
+    <div class="row">
+            <ul class="pager">
+             
+              
+            </ul>
+    </div>
+</div>
+
+
+<div class="col-md-4 mt20">
+        <div class="post-img">
+           
+            <img width="600" src="http://sebortiz.com/images/gopher.jpg" alt="webjeda">
+            
+        </div>
+            
+        
+        <div class="mt10 recent">
+            <h2>Recent articles</h2>        
+             <ul>
+                
+
+                      <li>
+                      <p><a href="/posts/jaeger_sidecar_ecs/">Using the jaeger agent as a sidecar process in ECS</a><small>&nbsp;&nbsp;October 5, 2018</small></p>
+                      </li>
+
+                
+              </ul>
+        </div>
+        
+        <br>
+
+</div>
+
+</div>
+
+
+
+
+      </div>
+    </div>
+
+    <footer>
+    <div class="container">
+        <div class="row p20">
+            
+
+            <div class="col-md-4 text-center mt25" >
+                
+            </div>
+            <div class="col-md-4 text-center mt25">
+               
+               
+               
+               
+               
+            </div>
+
+        </div> 
+    </div>
+</footer>
+    
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://sebortiz.com//js/bootstrap.min.js"></script>
+  
+  </body>
+
+</html>

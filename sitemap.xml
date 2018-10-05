@@ -3,12 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://sebortiz.com/posts/jaeger_sidecar_ecs/</loc>
+    <lastmod>2018-10-05T14:56:34-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://sebortiz.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>http://sebortiz.com/posts/</loc>
+    <lastmod>2018-10-05T14:56:34-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://sebortiz.com/</loc>
+    <lastmod>2018-10-05T14:56:34-07:00</lastmod>
     <priority>0</priority>
   </url>
   
