@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<link rel="stylesheet" href="/sass/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://sebortiz.com/">Sebastian Ortiz&#39;s blog</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://sebortiz.com/pages/about/">About</a></li>
+        <li><a href="http://sebortiz.com/pages/contact/">Contact</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a target="_blank" href="https://github.com/bul-ikana/hugo-cards">Project</a></li>
+            <li><a href="https://github.com/bul-ikana/hugo-cards.git">Download</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a target="_blank" href="https://themes.gohugo.io/">More Themes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>
+
+
+    <div class="container">
+      <div class="wrapper">
+        
+<div class="row">
+<div class="col-md-8">
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+          <header class="post-header">
+            <h1 class="post-title" itemprop="name headline">Plotting polygons on maps with geopands</h1>
+            <p class="post-meta"><time datetime='2018-11-08T18:20:26-08:00' itemprop="datePublished">November 8, 2018</time></p>
+                 
+          </header>
+
+          <div class="post-content" itemprop="articleBody">
+            <p>I recently found the need to filter a spark RDD of coordinates by presence in a series of polygons. Thankfully since all I cared about was just this point in polygon test and nothing else related to geography, I was able to avoid exporting data from spark and pulling into PostGIS. Instead I simply used the shapely library: <a href="https://automating-gis-processes.github.io/2016/Lesson3-point-in-polygon.html">https://automating-gis-processes.github.io/2016/Lesson3-point-in-polygon.html</a>
+Using the shapely within() function in spark was straightforward enough but I wanted to sanity check the polygons and data points I had been given, so I looked for a way to visualize polygons on top of a map. See below for a solution that uses geopandas and shapely to do just that. Note that you will need to have gdal installed and its corresponding data files, and set the GDAL_DATA environment variable.</p>
+
+<pre><code>export GDAL_DATA=`gdal-config --datadir`
+ipython --matplotlib=qt5
+</code></pre>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> geopandas <span style="color:#f92672">as</span> gpd
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">from</span> shapely.geometry <span style="color:#f92672">import</span> Point, Polygon
+
+world <span style="color:#f92672">=</span> gpd<span style="color:#f92672">.</span>read_file(gpd<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>get_path(<span style="color:#e6db74">&#39;naturalearth_lowres&#39;</span>))
+world<span style="color:#f92672">.</span>plot()
+fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>gcf(), plt<span style="color:#f92672">.</span>gca()
+poly_bounds <span style="color:#f92672">=</span> [(<span style="color:#f92672">-</span><span style="color:#ae81ff">110</span>, <span style="color:#ae81ff">45</span>), (<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">45</span>), (<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">27</span>), (<span style="color:#f92672">-</span><span style="color:#ae81ff">110</span>,<span style="color:#ae81ff">27</span>)]
+P1 <span style="color:#f92672">=</span> Polygon(poly_bounds)
+mypoly <span style="color:#f92672">=</span> gpd<span style="color:#f92672">.</span>GeoSeries(P1)
+mypoly<span style="color:#f92672">.</span>plot(ax<span style="color:#f92672">=</span>ax, facecolor<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)
+plt<span style="color:#f92672">.</span>show()</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Which produces the following output:
+<img src="/map_with_overlay.png" alt="World map with polygon overlay" /></p>
+
+          </div>
+
+    </article>
+    <div class="row">
+        
+    </div>
+    
+    <div class="row">
+            <ul class="pager">
+             
+                    <li><a class="next" href="/posts/jaeger_sidecar_ecs/">&laquo; Using the jaeger agent as a sidecar process in ECS</a></li>
+              
+              
+            </ul>
+    </div>
+</div>
+
+
+<div class="col-md-4 mt20">
+        <div class="post-img">
+           
+            <img width="600" src="http://sebortiz.com/images/gopher.jpg" alt="webjeda">
+            
+        </div>
+            
+        
+        <div class="mt10 recent">
+            <h2>Recent articles</h2>        
+             <ul>
+                
+
+                      <li>
+                      <p><a href="/posts/plotting_polygons_on_maps_with_geopands/">Plotting polygons on maps with geopands</a><small>&nbsp;&nbsp;November 8, 2018</small></p>
+                      </li>
+
+                
+
+                      <li>
+                      <p><a href="/posts/jaeger_sidecar_ecs/">Using the jaeger agent as a sidecar process in ECS</a><small>&nbsp;&nbsp;October 5, 2018</small></p>
+                      </li>
+
+                
+              </ul>
+        </div>
+        
+        <br>
+
+</div>
+
+</div>
+
+
+
+
+      </div>
+    </div>
+
+    <footer>
+    <div class="container">
+        <div class="row p20">
+            
+
+            <div class="col-md-4 text-center mt25" >
+                
+            </div>
+            <div class="col-md-4 text-center mt25">
+               
+               
+               
+               
+               
+            </div>
+
+        </div> 
+    </div>
+</footer>
+    
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://sebortiz.com//js/bootstrap.min.js"></script>
+   
+     
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46710292-3', 'auto');
+  ga('send', 'pageview');
+</script>
+  
+  </body>
+
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content on Sebastian Ortiz&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 05 Oct 2018 14:56:34 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 08 Nov 2018 18:20:26 -0800</lastBuildDate>
     
 	<atom:link href="http://sebortiz.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Plotting polygons on maps with geopands</title>
+      <link>http://sebortiz.com/posts/plotting_polygons_on_maps_with_geopands/</link>
+      <pubDate>Thu, 08 Nov 2018 18:20:26 -0800</pubDate>
+      
+      <guid>http://sebortiz.com/posts/plotting_polygons_on_maps_with_geopands/</guid>
+      <description>I recently found the need to filter a spark RDD of coordinates by presence in a series of polygons. Thankfully since all I cared about was just this point in polygon test and nothing else related to geography, I was able to avoid exporting data from spark and pulling into PostGIS. Instead I simply used the shapely library: https://automating-gis-processes.github.io/2016/Lesson3-point-in-polygon.html Using the shapely within() function in spark was straightforward enough but I wanted to sanity check the polygons and data points I had been given, so I looked for a way to visualize polygons on top of a map.</description>
+    </item>
     
     <item>
       <title>Using the jaeger agent as a sidecar process in ECS</title>
