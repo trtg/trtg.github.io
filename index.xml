@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal Blog</title>
-    <link>/</link>
+    <link>https://www.sebortiz.com/</link>
     <description>Recent content on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.sebortiz.com/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tensorflow with cuda support via docker in Gentoo</title>
-      <link>/post/tensorflow-docker-in-gentoo/</link>
+      <link>https://www.sebortiz.com/post/tensorflow-docker-in-gentoo/</link>
       <pubDate>Sat, 03 Oct 2020 02:23:46 -0700</pubDate>
       
-      <guid>/post/tensorflow-docker-in-gentoo/</guid>
+      <guid>https://www.sebortiz.com/post/tensorflow-docker-in-gentoo/</guid>
       <description>&lt;p&gt;Getting tensorflow configured properly with cuda in gentoo is a bit of a mess because of versioning issues (and in my case some mystifying compile time issue with sqlite3). I decided to punt on getting everything compiled from scratch and instead try the docker route recommended on the tensorflow site&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>/about/</link>
+      <link>https://www.sebortiz.com/about/</link>
       <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>/about/</guid>
+      <guid>https://www.sebortiz.com/about/</guid>
       <description>Sometimes I write about stuff.</description>
     </item>
     
