@@ -112,6 +112,7 @@
             </div>
 
             <p>Hugo&rsquo;s documentation is not entirely clear on the format of the baseURL value in config.toml when using github pages with a custom domain. When using a custom domain, you need to add the file static/CNAME whose contents are only the CNAME of your site (<a href="http://www.sebortiz.com">www.sebortiz.com</a> in the case of this site). However, the baseURL value does seem to require the protocol as well (I guess this is implied by URL in the name&hellip;), so in the case of this site <a href="https://www.sebortiz.com">https://www.sebortiz.com</a>.</p>
+<p>Note that setting a blank baseURL, i.e. baseURL=&rdquo;&rdquo; will do something that is almost certainly not what you would intend. It ends up creating URLs with paths that are relative to the current page you are viewing which will potentially break image paths,etc. depending on what page you are on.</p>
 
         </div>
         <div class="post-footer">
