@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Sebastian Ortiz | Sound only usable as root? </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.69.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="let&#39;s build something... or break it">
+    
+    <link rel="stylesheet"
+          href="https://www.sebortiz.com/css/style.min.ec15cff0912041d0dce3a88999b9424990bd24473761645397583776684cdc3b.css"
+          integrity="sha256-7BXP8JEgQdDc46iJmblCSZC9JEc3YWRTl1g3dmhM3Ds="
+          crossorigin="anonymous"
+          type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    
+    <link rel="shortcut icon" href="https://www.sebortiz.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.sebortiz.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.com/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://www.sebortiz.com/post/sound_only_works_as_root/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://www.sebortiz.com/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
+            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sound only usable as root?"/>
+<meta name="twitter:description" content="Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:
+1  sudo setfacl -m g:audio:rw /dev/snd/*   Allowed all users in the audio group to at least list the available sound cards via: 1  aplay -l   Previously, the above command would return an empty list."/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://www.sebortiz.com/images/bear.png" alt="profile picture">
+            <h3 title=""><a href="/">Sebastian Ortiz</a></h3>
+            <div class="description">
+                <p>let&#39;s build something... or break it</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://linkedin.com/in/sebortiz" rel="me" aria-label="Linkedin">
+                    <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Sebastian Ortiz 2020 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Sound only usable as root?</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Sat, Oct 3, 2020</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">2-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo setfacl -m g:audio:rw /dev/snd/*</code></pre></td></tr></table>
+</div>
+</div>
+<p>Allowed all users in the audio group to at least list the available sound cards via:
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aplay -l</code></pre></td></tr></table>
+</div>
+</div>
+Previously, the above command would return an empty list. At this point attempting to play an audio file with aplay still yielded an error saying the audio device was stuck. Being very explicit about which device to use, however, did work:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aplay -D plughw:0,0 /usr/share/sounds/alsa/Front_Center.wav</code></pre></td></tr></table>
+</div>
+</div>
+<p>So now to make that the default sink used by pulse audio, I added a line to /etc/pulse/default.pa before the .ifexists module-udev-detect.so line, below the comment that says: ### Load audio drivers statically</p>
+<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">load-module module-alsa-sink device<span style="color:#f92672">=</span>plughw:0,0</code></pre></td></tr></table>
+</div>
+</div>
+Now as my own user I ran:
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pulseaudio --kill
+pulseaudio --start</code></pre></td></tr></table>
+</div>
+</div>
+Now if I run:
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacmd list-sinks</code></pre></td></tr></table>
+</div>
+</div>
+I get the output below and I can use the soundcard:</p>
+<pre><code class="language-linenos=table" data-lang="linenos=table">1 sink(s) available.
+  * index: 0
+        name: &lt;alsa_output.plughw_0_0&gt;
+        driver: &lt;module-alsa-sink.c&gt;
+        flags: HARDWARE DECIBEL_VOLUME LATENCY DYNAMIC_LATENCY
+        state: SUSPENDED
+        suspend cause: IDLE
+        priority: 9000
+        volume: front-left: 65536 / 100% / 0.00 dB,   front-right: 65536 / 100% / 0.00 dB
+                balance 0.00
+        base volume: 65536 / 100% / 0.00 dB
+        volume steps: 65537
+        muted: no
+        current latency: 0.00 ms
+        max request: 0 KiB
+        max rewind: 0 KiB
+        monitor source: 0
+        sample spec: s16le 2ch 44100Hz
+        channel map: front-left,front-right
+                     Stereo
+        used by: 0
+        linked by: 0
+        configured latency: 0.00 ms; range is 0.50 .. 2000.00 ms
+        module: 5
+        properties:
+                alsa.resolution_bits = &#34;16&#34;
+                device.api = &#34;alsa&#34;
+                device.class = &#34;sound&#34;
+                alsa.class = &#34;generic&#34;
+                alsa.subclass = &#34;generic-mix&#34;
+                alsa.name = &#34;ALC887-VD Analog&#34;
+                alsa.id = &#34;ALC887-VD Analog&#34;
+                alsa.subdevice = &#34;0&#34;
+                alsa.subdevice_name = &#34;subdevice #0&#34;
+                alsa.device = &#34;0&#34;
+                alsa.card = &#34;0&#34;
+                alsa.card_name = &#34;HDA Intel PCH&#34;
+                alsa.long_card_name = &#34;HDA Intel PCH at 0xdf320000 irq 129&#34;
+                alsa.driver_name = &#34;snd_hda_intel&#34;
+                device.bus_path = &#34;/devices/pci0000:00/0000:00:1f.3/sound/card0&#34;
+                sysfs.path = &#34;/devices/pci0000:00/0000:00:1f.3/sound/card0&#34;
+                device.string = &#34;plughw:0,0&#34;
+                device.buffering.buffer_size = &#34;352800&#34;
+                device.buffering.fragment_size = &#34;176400&#34;
+                device.access_mode = &#34;mmap+timer&#34;
+                device.description = &#34;HDA Intel PCH&#34;
+                device.icon_name = &#34;audio-card&#34;</code></pre>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
+        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
+        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
+        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        crossorigin="anonymous"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-179545567-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+
+</html>

@@ -101,6 +101,47 @@
     
         <div class="post animated fadeInDown">
             <div class="post-title">
+                <h3><a href="/post/sound_only_works_as_root/">Sound only usable as root?</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:
+1  sudo setfacl -m g:audio:rw /dev/snd/*   Allowed all users in the audio group to at least list the available sound cards via: 1  aplay -l   Previously, the above command would return an empty list.</p></div>
+
+                <div class="p_part"><p></p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Sat, Oct 3, 2020</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
+                <h3><a href="/post/getting_keyboard_and_mouse_working/">Keyboard and mouse only working as root in Xorg?!</a>
+                </h3>
+            </div>
+            <div class="post-content">
+                <div class="p_part"><p>Ran into an issue which seems fairly common, but my particular steps to diagnose and &ldquo;solve&rdquo; the problem were not easy to figure out. After updating an old gentoo box that hadn&rsquo;t been thoroughly updated in years, I ran into a problem where my keyboard and mouse were only accessible as root once I was in X. I could use the keyboard as myself in the console but as soon as I ran startx, it become unresponsive.</p></div>
+
+                <div class="p_part"><p></p></div>
+            </div>
+            <div class="post-footer">
+                <div class="meta">
+                    <div class="info"><em class="fa fa-sun-o"></em><span
+                                class="date">Sat, Oct 3, 2020</span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="post animated fadeInDown">
+            <div class="post-title">
                 <h3><a href="/post/how_to_show_chrome_url_paths/">How to show chrome URL paths in chrome 87</a>
                 </h3>
             </div>

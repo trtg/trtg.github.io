@@ -6,10 +6,29 @@
     <description>Recent content in Posts on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Oct 2020 04:40:49 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2020 16:45:05 -0700</lastBuildDate>
     
 	<atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sound only usable as root?</title>
+      <link>https://www.sebortiz.com/post/sound_only_works_as_root/</link>
+      <pubDate>Sat, 03 Oct 2020 16:45:05 -0700</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/sound_only_works_as_root/</guid>
+      <description>Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:
+1  sudo setfacl -m g:audio:rw /dev/snd/*   Allowed all users in the audio group to at least list the available sound cards via: 1  aplay -l   Previously, the above command would return an empty list.</description>
+    </item>
+    
+    <item>
+      <title>Keyboard and mouse only working as root in Xorg?!</title>
+      <link>https://www.sebortiz.com/post/getting_keyboard_and_mouse_working/</link>
+      <pubDate>Sat, 03 Oct 2020 16:21:20 -0700</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/getting_keyboard_and_mouse_working/</guid>
+      <description>Ran into an issue which seems fairly common, but my particular steps to diagnose and &amp;ldquo;solve&amp;rdquo; the problem were not easy to figure out. After updating an old gentoo box that hadn&amp;rsquo;t been thoroughly updated in years, I ran into a problem where my keyboard and mouse were only accessible as root once I was in X. I could use the keyboard as myself in the console but as soon as I ran startx, it become unresponsive.</description>
+    </item>
     
     <item>
       <title>How to show chrome URL paths in chrome 87</title>
