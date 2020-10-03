@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Personal Blog</title>
-    <link>/</link>
-    <description>Recent content on Personal Blog</description>
+    <title>Posts on Personal Blog</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2020 02:23:46 -0700</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>/post/tensorflow-docker-in-gentoo/</guid>
       <description>&lt;p&gt;Getting tensorflow configured properly with cuda in gentoo is a bit of a mess because of versioning issues (and in my case some mystifying compile time issue with sqlite3). I decided to punt on getting everything compiled from scratch and instead try the docker route recommended on the tensorflow site&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Sometimes I write about stuff.</description>
     </item>
     
   </channel>
