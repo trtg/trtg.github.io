@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Sebastian Ortiz </title>
+    <title> Sebastian Ortiz | How to show chrome URL paths in chrome 87 </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.69.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,10 +19,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.comfavicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.comfavicon-16x16.png">
 
-    <link rel="canonical" href="https://www.sebortiz.com/">
+    <link rel="canonical" href="https://www.sebortiz.com/post/how_to_show_chrome_url_paths/">
 
     
-    <link rel="alternate" type="application/rss+xml" href="https://www.sebortiz.com/index.xml" title="Personal Blog" />
     
     
     
@@ -31,8 +30,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="let&#39;s build something... or break it"/>
+<meta name="twitter:title" content="How to show chrome URL paths in chrome 87"/>
+<meta name="twitter:description" content="For reasons completely unfathomable to me, recent versions of chrome decided it would be nice to hide pretty much every aspect of the URL shown in your searchbar/omnibox other than the top level domain. So if you are on https://www.sebortiz.com/some-blog-post chrome 87 will inexplicably just show you nothing more than sebortiz.com until you click into the box at which point it deigns to reveal some details. This behavior is infuriating to say the least."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -69,7 +68,7 @@
         
         
             
-            <li><a class="current"
+            <li><a 
                    href="/"
                         
                    title="">Home</a></li>
@@ -97,73 +96,42 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    
-    
-        <div class="post animated fadeInDown">
-            <div class="post-title">
-                <h3><a href="/post/how_to_show_chrome_url_paths/">How to show chrome URL paths in chrome 87</a>
-                </h3>
-            </div>
-            <div class="post-content">
-                <div class="p_part"><p>For reasons completely unfathomable to me, recent versions of chrome decided it would be nice to hide pretty much every aspect of the URL shown in your searchbar/omnibox other than the top level domain. So if you are on https://www.sebortiz.com/some-blog-post chrome 87 will inexplicably just show you nothing more than sebortiz.com until you click into the box at which point it deigns to reveal some details. This behavior is infuriating to say the least.</p></div>
+    <div class="post animated fadeInDown">
+        <div class="post-content">
 
-                <div class="p_part"><p></p></div>
-            </div>
-            <div class="post-footer">
-                <div class="meta">
-                    <div class="info"><em class="fa fa-sun-o"></em><span
-                                class="date">Sat, Oct 3, 2020</span>
-                        
+            <div class="post-title">
+                <h3>How to show chrome URL paths in chrome 87</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Sat, Oct 3, 2020</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
                     </div>
-                </div>
+                
+            </div>
+
+            <p>For reasons completely unfathomable to me, recent versions of chrome decided it would be nice to hide pretty much every aspect of the URL shown in your searchbar/omnibox other than the top level domain. So if you are on <a href="https://www.sebortiz.com/some-blog-post">https://www.sebortiz.com/some-blog-post</a> chrome 87 will inexplicably just show you nothing more than sebortiz.com until you click into the box at which point it deigns to reveal some details. This behavior is infuriating to say the least. The flag that allows you to see the protocol and subdomain of a URL (i.e. https://www.) seems to have been removed altogether from chrome but at least you can still toggle some flags to still see the path and query string.</p>
+<p>Go to chrome://flags and search for omnibox. I would link directly to the flags, but it seems the chrome team likes renaming and/or removing flags between versions. If you are lucky the following flags will still be around when you search:</p>
+<ul>
+<li>#omnibox-ui-sometimes-elide-to-registrable-domain</li>
+<li>#omnibox-ui-hide-steady-state-url-path-query-and-ref-on-interaction</li>
+</ul>
+<p>Setting the above flags to disabled and relaunching chrome will at least let you see the path of your URL with any query parameters. If anyone knows of a way to force protocol and subdomain to be shown in chrome 87+, please let me know.</p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
             </div>
         </div>
-    
-        <div class="post animated fadeInDown">
-            <div class="post-title">
-                <h3><a href="/post/hugo_baseurl_with_custom_domain/">How to set Hugo baseURL with custom domain</a>
-                </h3>
-            </div>
-            <div class="post-content">
-                <div class="p_part"><p>Hugo&rsquo;s documentation is not entirely clear on the format of the baseURL value in config.toml when using github pages with a custom domain. When using a custom domain, you need to add the file static/CNAME whose contents are only the CNAME of your site (www.sebortiz.com in the case of this site). However, the baseURL value does seem to require the protocol as well (I guess this is implied by URL in the name&hellip;), so in the case of this site https://www.</p></div>
 
-                <div class="p_part"><p></p></div>
-            </div>
-            <div class="post-footer">
-                <div class="meta">
-                    <div class="info"><em class="fa fa-sun-o"></em><span
-                                class="date">Sat, Oct 3, 2020</span>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="post animated fadeInDown">
-            <div class="post-title">
-                <h3><a href="/post/tensorflow-docker-in-gentoo/">Tensorflow with cuda support via docker in Gentoo</a>
-                </h3>
-            </div>
-            <div class="post-content">
-                <div class="p_part"><p><p>Getting tensorflow configured properly with cuda in gentoo is a bit of a mess because of versioning issues (and in my case some mystifying compile time issue with sqlite3). I decided to punt on getting everything compiled from scratch and instead try the docker route recommended on the tensorflow site&hellip;</p></p></div>
-
-                <div class="p_part"><p></p></div>
-            </div>
-            <div class="post-footer">
-                <div class="meta">
-                    <div class="info"><em class="fa fa-sun-o"></em><span
-                                class="date">Sat, Oct 3, 2020</span>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    <div class="pagination">
         
-
-
+            
+        
     </div>
+
 
         </div>
     </div>

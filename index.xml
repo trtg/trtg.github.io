@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>How to show chrome URL paths in chrome 87</title>
+      <link>https://www.sebortiz.com/post/how_to_show_chrome_url_paths/</link>
+      <pubDate>Sat, 03 Oct 2020 04:40:49 -0700</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/how_to_show_chrome_url_paths/</guid>
+      <description>For reasons completely unfathomable to me, recent versions of chrome decided it would be nice to hide pretty much every aspect of the URL shown in your searchbar/omnibox other than the top level domain. So if you are on https://www.sebortiz.com/some-blog-post chrome 87 will inexplicably just show you nothing more than sebortiz.com until you click into the box at which point it deigns to reveal some details. This behavior is infuriating to say the least.</description>
+    </item>
+    
+    <item>
+      <title>How to set Hugo baseURL with custom domain</title>
+      <link>https://www.sebortiz.com/post/hugo_baseurl_with_custom_domain/</link>
+      <pubDate>Sat, 03 Oct 2020 04:28:52 -0700</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/hugo_baseurl_with_custom_domain/</guid>
+      <description>Hugo&amp;rsquo;s documentation is not entirely clear on the format of the baseURL value in config.toml when using github pages with a custom domain. When using a custom domain, you need to add the file static/CNAME whose contents are only the CNAME of your site (www.sebortiz.com in the case of this site). However, the baseURL value does seem to require the protocol as well (I guess this is implied by URL in the name&amp;hellip;), so in the case of this site https://www.</description>
+    </item>
+    
+    <item>
       <title>Tensorflow with cuda support via docker in Gentoo</title>
       <link>https://www.sebortiz.com/post/tensorflow-docker-in-gentoo/</link>
       <pubDate>Sat, 03 Oct 2020 02:23:46 -0700</pubDate>

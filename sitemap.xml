@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.sebortiz.com/post/how_to_show_chrome_url_paths/</loc>
+    <lastmod>2020-10-03T04:40:49-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sebortiz.com/post/</loc>
-    <lastmod>2020-10-03T02:23:46-07:00</lastmod>
+    <lastmod>2020-10-03T04:40:49-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sebortiz.com/post/hugo_baseurl_with_custom_domain/</loc>
+    <lastmod>2020-10-03T04:28:52-07:00</lastmod>
   </url>
   
   <url>
