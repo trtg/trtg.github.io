@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Sebastian Ortiz | Tags </title>
+    <title> Sebastian Ortiz | Fixing could not load vgui2_s.so error with Steam </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,10 +19,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.com/favicons/favicon-16x16.png">
 
-    <link rel="canonical" href="https://www.sebortiz.com/tags/">
+    <link rel="canonical" href="https://www.sebortiz.com/post/steam_vgui2_issue/">
 
     
-    <link rel="alternate" type="application/rss+xml" href="https://www.sebortiz.com/tags/index.xml" title="Personal Blog" />
     
     
     
@@ -31,8 +30,8 @@
             integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Tags"/>
-<meta name="twitter:description" content="let&#39;s build something... or break it"/>
+<meta name="twitter:title" content="Fixing could not load vgui2_s.so error with Steam"/>
+<meta name="twitter:description" content="Occasionally steam updates seem to update bundled libraries in such a way that breaks everything. This results in an error dialog that points you to this knowledge base page: https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660 which in my case did not prove helpful. Using ldd as they suggested showed that everything was seemingly fine- all needed dependencies were present. Instead what proved to be the issue was problematic versions of certain libraries bundled in the steam runtime- the 3 libraries shown below."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -97,11 +96,51 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    <div class="archive animated fadeInDown">
-        <ul class="list-with-title">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Fixing could not load vgui2_s.so error with Steam</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Thu, Oct 8, 2020</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>Occasionally steam updates seem to update bundled libraries in such a way that breaks everything. This results in an error dialog that points you to this knowledge base page: <a href="https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660">https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660</a>
+which in my case did not prove helpful. Using ldd as they suggested showed that everything was seemingly fine- all needed dependencies were present. Instead what proved to be the issue was problematic versions of certain libraries bundled in the steam runtime- the 3 libraries shown below.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libgpg-error.so*&#39;</span> -delete
+find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libstdc++*&#39;</span> -delete
+find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libgcc_s.so*&#39;</span> -delete</code></pre></td></tr></table>
+</div>
+</div>
+<p>Deleting those 3 bundled libraries forced steam to use the versions of the library that existed system wide, and thus got things working. The solution was found here:
+<a href="https://forums.gentoo.org/viewtopic-t-1110384-start-0.html">https://forums.gentoo.org/viewtopic-t-1110384-start-0.html</a></p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
             
-        </ul>
+        
     </div>
+
 
         </div>
     </div>

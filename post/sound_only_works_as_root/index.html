@@ -3,7 +3,7 @@
     <title> Sebastian Ortiz | Sound only usable as root? </title>
 
     
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.69.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="let&#39;s build something... or break it">
     
     <link rel="stylesheet"
@@ -107,7 +107,7 @@
                         <em class="fa fa-sun-o"></em>
                         <span class="date">Sat, Oct 3, 2020</span>
                         <em class="fa fa-clock-o"></em>
-                        <span class="reading-time">2-minute read</span>
+                        <span class="reading-time">3-minute read</span>
                     </div>
                 
             </div>
@@ -216,6 +216,12 @@ I get the output below and I can use the soundcard:</p>
                 device.access_mode = &#34;mmap+timer&#34;
                 device.description = &#34;HDA Intel PCH&#34;
                 device.icon_name = &#34;audio-card&#34;</code></pre>
+<p>NOTE: occasionally the pulseaudio config may get corupted so removing or moving the ~/.config/pulse folder (which will get regenerated the next time pulse starts) may fix other issues.</p>
+<p>May need to manually create a link for a cookie file to avoid this error:
+pulseaudio[23401]: [pulseaudio] authkey.c: Failed to open cookie file &lsquo;/home/sebortiz/.config/pulse/cookie&rsquo;: No such file or directory</p>
+<p>in the ~/.config/pulse directory, do:
+ln -s ../../.pulse-cookie cookie</p>
+<p>because there is a ~/.pulse-cookie file present</p>
 
         </div>
         <div class="post-footer">

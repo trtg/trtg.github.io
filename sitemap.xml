@@ -3,8 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.sebortiz.com/</loc>
+    <lastmod>2020-10-08T18:36:30-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.sebortiz.com/post/steam_vgui2_issue/</loc>
+    <lastmod>2020-10-08T18:36:30-07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.sebortiz.com/post/</loc>
-    <lastmod>2020-10-03T16:45:05-07:00</lastmod>
+    <lastmod>2020-10-08T18:36:30-07:00</lastmod>
   </url>
   
   <url>
@@ -30,11 +40,6 @@
   <url>
     <loc>https://www.sebortiz.com/post/tensorflow-docker-in-gentoo/</loc>
     <lastmod>2020-10-03T02:23:46-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.sebortiz.com/</loc>
-    <lastmod>2020-10-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
