@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="What to do if you accidentally delete an entire bigquery dataset"/>
 <meta name="twitter:description" content="A quick note on a particular feature of bigquery that I did not see anywhere in the documentation. If you accidentally delete a single table, you can use a feature called timetravel to restore the state of that table from a previous point in time. The way to do this:
-1  bg cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table   If you have deleted the entire dataset however, the above method will fail."/>
+1  bq cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table   If you have deleted the entire dataset however, the above method will fail."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -118,7 +118,7 @@
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bg cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table</code></pre></td></tr></table>
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bq cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table</code></pre></td></tr></table>
 </div>
 </div>
 <p>If you have deleted the entire dataset however, the above method will fail. Interestingly, if you simply recreate a dataset with the same name as the one that was deleted, timetravel on the tables that lived in that dataset will work again. In other words, if you had accidentally deleted the dataset called &ldquo;my_data_set&rdquo; simply recreate it first:</p>
@@ -136,7 +136,7 @@
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bg cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table</code></pre></td></tr></table>
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bq cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table</code></pre></td></tr></table>
 </div>
 </div></p>
 <p>and you should be all set. One thing to note is that if the dataset in question had a very large number of tables, there really are no good tools for obtaining bigquery metadata so you can figure out the list of tables that previously existed. As far as I can tell, the best you can do is go through your stackdriver logs, or other logs to look for all references to tables in that dataset. A similar problem applies to figuring out the latest available timestamp for a table. Bigquery&rsquo;s bq command has the following syntactic sugar to denote the oldest available snapshot of a table:</p>
@@ -145,7 +145,7 @@
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bg cp my_data_set.my_deleted_table@0 my_data_set.my_restored_table</code></pre></td></tr></table>
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bq cp my_data_set.my_deleted_table@0 my_data_set.my_restored_table</code></pre></td></tr></table>
 </div>
 </div>
 <p>The 0 timestamp references the earliest available snapshot for that table. When dealing with a table that was deleted, however, no equivalent syntactic sugar exists to reference the most recent available snapshot for that table.</p>

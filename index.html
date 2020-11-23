@@ -106,7 +106,7 @@
             </div>
             <div class="post-content">
                 <div class="p_part"><p>A quick note on a particular feature of bigquery that I did not see anywhere in the documentation. If you accidentally delete a single table, you can use a feature called timetravel to restore the state of that table from a previous point in time. The way to do this:
-1  bg cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table   If you have deleted the entire dataset however, the above method will fail.</p></div>
+1  bq cp my_data_set.my_deleted_table@1234567890 my_data_set.my_restored_table   If you have deleted the entire dataset however, the above method will fail.</p></div>
 
                 <div class="p_part"><p></p></div>
             </div>
