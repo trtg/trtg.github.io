@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 22 Nov 2020 19:09:51 -0800</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Dec 2020 23:49:12 -0800</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Leap motion hand tracking in gentoo linux</title>
+      <link>https://www.sebortiz.com/post/using_leap_motion_hand_tracking/</link>
+      <pubDate>Tue, 15 Dec 2020 23:49:12 -0800</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/using_leap_motion_hand_tracking/</guid>
+      <description>The other day I decided to dust off my old leap motion handtracking kit and see if things still work in modern linux. A long time ago, I got into the developer program, so I had a somewhat janky prerelease bit of hardware in minimalist packaging (shown above). Unfortunately, the last update of leap motion SDK (orion/4.0+) was never released for linux, but the 2.3.1 release is still somewhat usable.</description>
+    </item>
+    
     <item>
       <title>What to do if you accidentally delete an entire bigquery dataset</title>
       <link>https://www.sebortiz.com/post/biqquery_dataset_undelete/</link>
