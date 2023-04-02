@@ -6,17 +6,7 @@
     <description>Recent content in Posts on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 02 Apr 2023 11:49:39 -0700</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fixing unpopulated submodule fatal error in hugo</title>
-      <link>https://www.sebortiz.com/post/fixing_unpopulated_submodule_in_hugo/</link>
-      <pubDate>Sun, 02 Apr 2023 11:49:39 -0700</pubDate>
-      
-      <guid>https://www.sebortiz.com/post/fixing_unpopulated_submodule_in_hugo/</guid>
-      <description>In the process of resuming this blog on a new PC I encountered the following output when running my deploy.sh script:
-Deploying updates to GitHub... Start building sites … hugo v0.111.3+extended linux/amd64 BuildDate=unknown VendorInfo=xxxxxxxxx | EN -------------------+----- Pages | 19 Paginator pages | 0 Non-page files | 0 Static files | 12 Processed images | 0 Aliases | 4 Sitemaps | 1 Cleaned | 0 Total in 21 ms fatal: in unpopulated submodule &amp;#39;public&amp;#39; The public subdirectory of my hugo repo is a submodule that points to the github pages repo that actually hosts this blog.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 15 Dec 2020 23:49:12 -0800</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leap motion hand tracking in gentoo linux</title>
       <link>https://www.sebortiz.com/post/using_leap_motion_hand_tracking/</link>
