@@ -1,68 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://www.sebortiz.com/</loc>
-    <lastmod>2020-12-15T23:49:12-08:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2023-04-02T11:49:39-07:00</lastmod>
+  </url><url>
+    <loc>https://www.sebortiz.com/post/fixing_unpopulated_submodule_in_hugo/</loc>
+    <lastmod>2023-04-02T11:49:39-07:00</lastmod>
+  </url><url>
+    <loc>https://www.sebortiz.com/post/</loc>
+    <lastmod>2023-04-02T11:49:39-07:00</lastmod>
+  </url><url>
     <loc>https://www.sebortiz.com/post/using_leap_motion_hand_tracking/</loc>
     <lastmod>2020-12-15T23:49:12-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.sebortiz.com/post/</loc>
-    <lastmod>2020-12-15T23:49:12-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
+    <loc>https://www.sebortiz.com/post/use_unreal_engine_launcher_in_linux/</loc>
+    <lastmod>2020-12-13T16:42:52-08:00</lastmod>
+  </url><url>
     <loc>https://www.sebortiz.com/post/biqquery_dataset_undelete/</loc>
     <lastmod>2020-11-22T19:09:51-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/steam_vgui2_issue/</loc>
     <lastmod>2020-10-08T18:36:30-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/sound_only_works_as_root/</loc>
     <lastmod>2020-10-03T16:45:05-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/getting_keyboard_and_mouse_working/</loc>
     <lastmod>2020-10-03T16:21:20-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/how_to_show_chrome_url_paths/</loc>
     <lastmod>2020-10-03T04:40:49-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/hugo_baseurl_with_custom_domain/</loc>
     <lastmod>2020-10-03T04:28:52-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/post/tensorflow-docker-in-gentoo/</loc>
     <lastmod>2020-10-03T02:23:46-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/about/</loc>
     <lastmod>2020-10-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://www.sebortiz.com/tags/</loc>
   </url>
-  
 </urlset>

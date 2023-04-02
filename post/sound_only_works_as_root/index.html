@@ -3,12 +3,12 @@
     <title> Sebastian Ortiz | Sound only usable as root? </title>
 
     
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.111.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="let&#39;s build something... or break it">
     
     <link rel="stylesheet"
-          href="https://www.sebortiz.com/css/style.min.ec15cff0912041d0dce3a88999b9424990bd24473761645397583776684cdc3b.css"
-          integrity="sha256-7BXP8JEgQdDc46iJmblCSZC9JEc3YWRTl1g3dmhM3Ds="
+          href="https://www.sebortiz.com/css/style.min.bcbc7bde1d41a6366cb1e31ec2d4027a3e5218b4a9019a0ee13ff6bce65bcedf.css"
+          integrity="sha256-vLx73h1BpjZsseMewtQCej5SGLSpAZoO4T/2vOZbzt8="
           crossorigin="anonymous"
           type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -26,13 +26,13 @@
     
     
     <script type="text/javascript"
-            src="https://www.sebortiz.com/js/anatole-header.min.e782db136ec18d105a4552702eac49f4620d6867da3fbf808bd53e806c96be6e.js"
-            integrity="sha256-54LbE27BjRBaRVJwLqxJ9GINaGfaP7&#43;Ai9U&#43;gGyWvm4="
+            src="https://www.sebortiz.com/js/anatole-header.min.a3fa728a9f57833a31dfb45c48caaf1e4890c8c97f07bd7133fc2359745edb5d.js"
+            integrity="sha256-o/pyip9Xgzox37RcSMqvHkiQyMl/B71xM/wjWXRe210="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sound only usable as root?"/>
 <meta name="twitter:description" content="Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:
-1  sudo setfacl -m g:audio:rw /dev/snd/*   Allowed all users in the audio group to at least list the available sound cards via: 1  aplay -l   Previously, the above command would return an empty list."/>
+1 sudo setfacl -m g:audio:rw /dev/snd/* Allowed all users in the audio group to at least list the available sound cards via: 1 aplay -l Previously, the above command would return an empty list."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -55,7 +55,7 @@
         
     </ul>
     <div class="footer">
-        <div class="by_farbox">&copy; Sebastian Ortiz 2020 </div>
+        <div class="by_farbox">&copy; Sebastian Ortiz 2023 </div>
     </div>
 </div>
 <div class="main">
@@ -113,63 +113,63 @@
             </div>
 
             <p>Similar to the issue I ran into with my keyboard and mouse, following a bunch of updates, my soundcard was only usable as root. I checked the permissions of all the nodes in /dev/snd/* and saw they were indeed exclusively accessible by root. Running this:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo setfacl -m g:audio:rw /dev/snd/*</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo setfacl -m g:audio:rw /dev/snd/*</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Allowed all users in the audio group to at least list the available sound cards via:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aplay -l</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aplay -l</span></span></code></pre></td></tr></table>
 </div>
 </div>
 Previously, the above command would return an empty list. At this point attempting to play an audio file with aplay still yielded an error saying the audio device was stuck. Being very explicit about which device to use, however, did work:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">aplay -D plughw:0,0 /usr/share/sounds/alsa/Front_Center.wav</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aplay -D plughw:0,0 /usr/share/sounds/alsa/Front_Center.wav</span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>So now to make that the default sink used by pulse audio, I added a line to /etc/pulse/default.pa before the .ifexists module-udev-detect.so line, below the comment that says: ### Load audio drivers statically</p>
-<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<p><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">load-module module-alsa-sink device<span style="color:#f92672">=</span>plughw:0,0</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>load-module module-alsa-sink device<span style="color:#f92672">=</span>plughw:0,0</span></span></code></pre></td></tr></table>
 </div>
 </div>
 Now as my own user I ran:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pulseaudio --kill
-pulseaudio --start</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pulseaudio --kill
+</span></span><span style="display:flex;"><span>pulseaudio --start</span></span></code></pre></td></tr></table>
 </div>
 </div>
 Now if I run:
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacmd list-sinks</code></pre></td></tr></table>
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacmd list-sinks</span></span></code></pre></td></tr></table>
 </div>
 </div>
 I get the output below and I can use the soundcard:</p>
-<pre><code class="language-linenos=table" data-lang="linenos=table">1 sink(s) available.
+<pre tabindex="0"><code class="language-linenos=table" data-lang="linenos=table">1 sink(s) available.
   * index: 0
         name: &lt;alsa_output.plughw_0_0&gt;
         driver: &lt;module-alsa-sink.c&gt;
@@ -242,21 +242,21 @@ ln -s ../../.pulse-cookie cookie</p>
 </div>
 
 <script type="text/javascript"
-        src="https://www.sebortiz.com/js/jquery.min.86b1e8f819ee2d9099a783e50b49dff24282545fc40773861f9126b921532e4c.js"
-        integrity="sha256-hrHo&#43;BnuLZCZp4PlC0nf8kKCVF/EB3OGH5EmuSFTLkw="
+        src="https://www.sebortiz.com/js/jquery.min.decb4e8fdab5cb7b76ec6470b6fb73d30c7ee8e248d7486f49007f3c525b7acb.js"
+        integrity="sha256-3stOj9q1y3t27GRwtvtz0wx&#43;6OJI10hvSQB/PFJbess="
         crossorigin="anonymous"></script>
 
 
 
 
 <script type="text/javascript"
-        src="https://www.sebortiz.com/js/bundle.min.0f9c74cb78f13d1f15f33daff4037c70354f98acfbb97a6f61708966675c3cae.js"
-        integrity="sha256-D5x0y3jxPR8V8z2v9AN8cDVPmKz7uXpvYXCJZmdcPK4="
+        src="https://www.sebortiz.com/js/bundle.min.3ebad6bf39b2e7c2f899d3ed9bc97e8c0c1ead7a1b57472e3387321f673b8077.js"
+        integrity="sha256-PrrWvzmy58L4mdPtm8l&#43;jAwerXobV0cuM4cyH2c7gHc="
         crossorigin="anonymous"></script>
 
 <script type="text/javascript"
-        src="https://www.sebortiz.com/js/medium-zoom.min.92f21c856129f84aeb719459b3e6ac621a3032fd7b180a18c04e1d12083f8aba.js"
-        integrity="sha256-kvIchWEp&#43;ErrcZRZs&#43;asYhowMv17GAoYwE4dEgg/iro="
+        src="https://www.sebortiz.com/js/medium-zoom.min.e1c6918cbaa90022a5612f0bd71c7bf3be6d036614c5729cebfe14f7b91fa4bc.js"
+        integrity="sha256-4caRjLqpACKlYS8L1xx7875tA2YUxXKc6/4U97kfpLw="
         crossorigin="anonymous"></script>
 
 <script type="application/javascript">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Sebastian Ortiz | Fixing could not load vgui2_s.so error with Steam </title>
+    <title> Sebastian Ortiz | How to use the Epic Launcher with Unreal Engine in Linux </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.111.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.com/favicons/favicon-16x16.png">
 
-    <link rel="canonical" href="https://www.sebortiz.com/post/steam_vgui2_issue/">
+    <link rel="canonical" href="https://www.sebortiz.com/post/use_unreal_engine_launcher_in_linux/">
 
     
     
@@ -30,8 +30,8 @@
             integrity="sha256-o/pyip9Xgzox37RcSMqvHkiQyMl/B71xM/wjWXRe210="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Fixing could not load vgui2_s.so error with Steam"/>
-<meta name="twitter:description" content="Occasionally steam updates seem to update bundled libraries in such a way that breaks everything. This results in an error dialog that points you to this knowledge base page: https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660 which in my case did not prove helpful. Using ldd as they suggested showed that everything was seemingly fine- all needed dependencies were present. Instead what proved to be the issue was problematic versions of certain libraries bundled in the steam runtime- the 3 libraries shown below."/>
+<meta name="twitter:title" content="How to use the Epic Launcher with Unreal Engine in Linux"/>
+<meta name="twitter:description" content="For fun, I&rsquo;m currently trying to figure out how to control a skeleton in Unreal Engine 4 (UE4) in real time, using a custom LiveLink plugin. Step 1 towards that goal was simply learning how to use UE4 in the first place. Unfortunately, the Epic Games Store (the only straightforward way to obtain assets for UE4) does not have a native linux version. I found a pretty manual approach that simply uses wine, which I have included for posterity at the end of this post, but that approach did not work for me."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -100,33 +100,76 @@
         <div class="post-content">
 
             <div class="post-title">
-                <h3>Fixing could not load vgui2_s.so error with Steam</h3>
+                <h3>How to use the Epic Launcher with Unreal Engine in Linux</h3>
                 
                     <div class="info">
                         <em class="fa fa-sun-o"></em>
-                        <span class="date">Thu, Oct 8, 2020</span>
+                        <span class="date">Sun, Dec 13, 2020</span>
                         <em class="fa fa-clock-o"></em>
-                        <span class="reading-time">One-minute read</span>
+                        <span class="reading-time">2-minute read</span>
                     </div>
                 
             </div>
 
-            <p>Occasionally steam updates seem to update bundled libraries in such a way that breaks everything. This results in an error dialog that points you to this knowledge base page: <a href="https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660">https://support.steampowered.com/kb_article.php?ref=9205-OZVN-0660</a>
-which in my case did not prove helpful. Using ldd as they suggested showed that everything was seemingly fine- all needed dependencies were present. Instead what proved to be the issue was problematic versions of certain libraries bundled in the steam runtime- the 3 libraries shown below.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libgpg-error.so*&#39;</span> -delete
-</span></span><span style="display:flex;"><span>find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libstdc++*&#39;</span> -delete
-</span></span><span style="display:flex;"><span>find ~/.local/share/Steam/ -name <span style="color:#e6db74">&#39;libgcc_s.so*&#39;</span> -delete</span></span></code></pre></td></tr></table>
-</div>
-</div>
-<p>Deleting those 3 bundled libraries forced steam to use the versions of the library that existed system wide, and thus got things working. The solution was found here:
-<a href="https://forums.gentoo.org/viewtopic-t-1110384-start-0.html">https://forums.gentoo.org/viewtopic-t-1110384-start-0.html</a></p>
+            <p>For fun, I&rsquo;m currently trying to figure out how to control a skeleton in Unreal Engine 4 (UE4) in real time, using a custom LiveLink plugin. Step 1 towards that goal was simply learning how to use UE4 in the first place. Unfortunately, the Epic Games Store (the only straightforward way to obtain assets for UE4) does not have a native linux version. I found a pretty manual approach that simply uses wine, which I have included for posterity at the end of this post, but that approach did not work for me.</p>
+<p>The solution which worked fairly seamlessly for me was to use lutris to install the Epic Launcher, simply by clicking install here:</p>
+<p><a href="https://lutris.net/games/epic-games-store/">https://lutris.net/games/epic-games-store/</a></p>
+<p>Or you can open lutris- go to sources &ldquo;Lutris&rdquo;, search for epic games store, click install and approve all dialogs that appear.</p>
+<p>If you look at the settings of the epic games store in lutris, you&rsquo;ll see that it uses a custom wine prefix, this will create a problem when you want the games store to see projects you created in UE4, so that you can load assets into those projects. To make your UE4 projects visible to the games store you need to create your project links in the place where lutris expects them, i.e.</p>
+<p>cd /home/your_user_name/Games/epic-games-store/drive_c/users/your_user_name/My Documents</p>
+<p>once in this directory, make a link to where you saved your project using the UE4 editor, in my case:
+ln -s /home/your_user_name/Documents/Unreal\ Projects/first_hour_project ./first_hour_project</p>
+<h4 id="manual-wine-approach-your-mileage-may-vary-here">Manual WINE approach (your mileage may vary here)</h4>
+<p>Courtesy of Neomer found here:
+<a href="https://forums.unrealengine.com/community/community-content-tools-and-tutorials/1436836-launcher-marketplace-downloader-for-linux/page2">https://forums.unrealengine.com/community/community-content-tools-and-tutorials/1436836-launcher-marketplace-downloader-for-linux/page2</a></p>
+<p>Hi all!</p>
+<p>There is my solution for marketplace suppot in ubuntu. It&rsquo;ll be same for any other linux distributions.</p>
+<ol>
+<li>
+<p>Install and setup Wine.
+Wiki is here: <a href="https://wiki.winehq.org/Ubuntu">https://wiki.winehq.org/Ubuntu</a></p>
+</li>
+<li>
+<p>Download winetricks</p>
+</li>
+<li>
+<p>Install required tools using winetricks
+Code:
+sudo apt install winbind
+winetricks corefonts
+sudo apt install cabextract</p>
+</li>
+<li>
+<p>Download latest official version of Launcher.</p>
+</li>
+<li>
+<p>Run installation using wine
+Code:
+wine msiexec /i <!-- raw HTML omitted -->.msi</p>
+</li>
+<li>
+<p>After installation process finished first time run Launcher using wine with argument &ldquo;SkipBuildPatchPrereq&rdquo; to disable update process. Next time this argument isn&rsquo;t necessery anymore.
+Code:
+wine &lsquo;C:/Program Files (x86)/Epic Games/Launcher/Portal/Binaries/Win32/EpicGamesLauncher.exe&rsquo; -SkipBuildPatchPrereq
+Launcher is ready now, but it will not find any projects you created. To fix that you should do next steps:</p>
+</li>
+<li>
+<p>Open &ldquo;My Documents&rdquo; folder of wine. Usually placed in &ldquo;~/.wine/drive_c/users/<!-- raw HTML omitted -->/My documents/&rdquo;.</p>
+</li>
+<li>
+<p>Open or create folder &ldquo;Unreal projects&rdquo;. You shuold have something like that: &ldquo;~/.wine/drive_c/users/kir/Мои документы/Unreal Projects&rdquo;.</p>
+</li>
+<li>
+<p>Make symbolic link to your project&rsquo;s folder.
+Code:
+cd &ldquo;~/.wine/drive_c/users/kir/Мои документы/Unreal Projects&rdquo;
+ln -s <!-- raw HTML omitted --> ./<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>Restart Launcher.</p>
+</li>
+</ol>
+<p>Now you can download any assets to your projects.</p>
 
         </div>
         <div class="post-footer">

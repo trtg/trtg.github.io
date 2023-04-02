@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme=""><head>
-    <title> Sebastian Ortiz | 404 Page not found </title>
+    <title> Sebastian Ortiz | Fixing unpopulated submodule fatal error in hugo </title>
 
     
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.111.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.com/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.com/favicons/favicon-16x16.png">
 
-    <link rel="canonical" href="https://www.sebortiz.com/404.html">
+    <link rel="canonical" href="https://www.sebortiz.com/post/fixing_unpopulated_submodule_in_hugo/">
 
     
     
@@ -30,8 +30,9 @@
             integrity="sha256-o/pyip9Xgzox37RcSMqvHkiQyMl/B71xM/wjWXRe210="
             crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="404 Page not found"/>
-<meta name="twitter:description" content="let&#39;s build something... or break it"/>
+<meta name="twitter:title" content="Fixing unpopulated submodule fatal error in hugo"/>
+<meta name="twitter:description" content="In the process of resuming this blog on a new PC I encountered the following output when running my deploy.sh script:
+Deploying updates to GitHub... Start building sites … hugo v0.111.3&#43;extended linux/amd64 BuildDate=unknown VendorInfo=xxxxxxxxx | EN -------------------&#43;----- Pages | 19 Paginator pages | 0 Non-page files | 0 Static files | 12 Processed images | 0 Aliases | 4 Sitemaps | 1 Cleaned | 0 Total in 21 ms fatal: in unpopulated submodule &#39;public&#39; The public subdirectory of my hugo repo is a submodule that points to the github pages repo that actually hosts this blog."/>
 
 </head>
 <body><div class="sidebar animated fadeInDown">
@@ -96,12 +97,54 @@
 
     <div class="autopagerize_page_element">
         <div class="content">
-    <div class="page_404">
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
-        <p>Sorry, this page does not exist.</p>
-        <p>You can head back to <a href="https://www.sebortiz.com">homepage</a>.</p>
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Fixing unpopulated submodule fatal error in hugo</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Sun, Apr 2, 2023</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">One-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>In the process of resuming this blog on a new PC I encountered the following output when running my deploy.sh script:</p>
+<pre tabindex="0"><code>Deploying updates to GitHub...
+Start building sites …
+hugo v0.111.3+extended linux/amd64 BuildDate=unknown VendorInfo=xxxxxxxxx
+
+                   | EN
+-------------------+-----
+  Pages            | 19
+  Paginator pages  |  0
+  Non-page files   |  0
+  Static files     | 12
+  Processed images |  0
+  Aliases          |  4
+  Sitemaps         |  1
+  Cleaned          |  0
+
+Total in 21 ms
+fatal: in unpopulated submodule &#39;public&#39;
+</code></pre><p>The public subdirectory of my hugo repo is a submodule that points to the github pages repo that actually hosts this blog. That submodule setup was apparently broken</p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
     </div>
+
 
         </div>
     </div>
