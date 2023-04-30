@@ -130,10 +130,12 @@ Unfortunately, linuxdeploy uses cmake as its build toolchain so there&rsquo;s ma
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --recursive git@github.com:linuxdeploy/linuxdeploy.git
 </span></span><span style="display:flex;"><span>cd linuxdeploy
+</span></span><span style="display:flex;"><span>edit src/core/appdir.cpp and replace <span style="color:#e6db74">&#34;copyright.h&#34;</span> with <span style="color:#e6db74">&#34;copyright/copyright.h&#34;</span>
 </span></span><span style="display:flex;"><span>mkdir build
 </span></span><span style="display:flex;"><span>cd build
 </span></span><span style="display:flex;"><span>cmake ..
@@ -161,7 +163,7 @@ Unfortunately, linuxdeploy uses cmake as its build toolchain so there&rsquo;s ma
 </span></span><span style="display:flex;"><span>make <span style="color:#f92672">&amp;&amp;</span> make install</span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>The appimagetool binary is built from the AppImageKit repo which is an utter mess to compile, so I just grabbed a release from here:
+<p>The appimagetool binary is built from the AppImageKit repo which is an utter mess to compile (for example <a href="https://github.com/AppImage/AppImageKit/issues/1185">this issue</a>) , so I just grabbed a release from here:
 <a href="https://github.com/AppImage/AppImageKit/releases">https://github.com/AppImage/AppImageKit/releases</a>
 Specifically <a href="https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage">https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage</a></p>
 <p>then I made it executable and put it in my path:
