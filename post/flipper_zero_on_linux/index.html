@@ -143,7 +143,8 @@ Unfortunately, linuxdeploy uses cmake as its build toolchain so there&rsquo;s ma
 </div>
 </div>
 <p>Note that the &ndash;recursive flag for git clone is necessary or you will be missing files required for compilation. Also the &ldquo;make install&rdquo; may require sudo depending on your permissions for /usr/local/bin</p>
-<p>Note also, in the context of gentoo you will need libpng and libjpeg-turbo to have been compiled with support for static libraries by specifying the static-libs USE flag.</p>
+<p>Note also, in the context of gentoo you will need libpng and libjpeg-turbo to have been compiled with support for static libraries by specifying the static-libs USE flag.
+The copyright.h fix above was described here: <a href="https://github.com/linuxdeploy/linuxdeploy/issues/212">https://github.com/linuxdeploy/linuxdeploy/issues/212</a></p>
 <p>Now we need linuxdeploy&rsquo;s appimage plugin and the appimagetool binary.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
