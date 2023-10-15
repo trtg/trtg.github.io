@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Personal Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Apr 2023 16:35:34 -0700</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Oct 2023 12:03:48 -0700</lastBuildDate><atom:link href="https://www.sebortiz.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rigol DHO914S vs Siglent 1104X-E</title>
+      <link>https://www.sebortiz.com/post/rigol_vs_siglent/</link>
+      <pubDate>Sun, 15 Oct 2023 12:03:48 -0700</pubDate>
+      
+      <guid>https://www.sebortiz.com/post/rigol_vs_siglent/</guid>
+      <description>I recently received a Rigol DHO914S to replace the Siglent SDS-1104XE I had just ordered not long ago. The timing of the release of the Rigol was such that I ordered the Siglent and learned about the new line of compact USB-C powered Rigols a few days later. Here&amp;rsquo;s a quick comparison table between the two scopes:
+Metric Rigol Siglent Sampling Rate 1 ADC at 1.25GS/sec 2 ADC at 1GS/s each Analog Bandwidth (un-hacked) 125Mhz 100Mhz ADC resolution 12 bits 8 bits Waveform capture rate 1,000,000 wfm/s 100,000wfm/s(normal mode) or 400,000 wfm/s(sequence mode) Screen 7&amp;quot; 1024x600 touchscreen 7&amp;quot; 800x480 no touch Connectivity ethernet, USB-A,USB-B, HDMI,40-pin(logic analyzer), AFG out, Aux out ethernet, USB-Ax2, USB-B,SBUS (logic analyzer), Trig out/(Pass/fail) Power supply external USB-C brick (option for battery) mains power with 3 prong plug AWG integrated external USB module Rigol Unboxing Side by side size comparison The one thing that struck me on opening the Rigol box is how amazingly small the 914S is, especially compared with the Siglent (which itself is already small).</description>
+    </item>
+    
     <item>
       <title>Getting started with Flipper zero on gentoo linux</title>
       <link>https://www.sebortiz.com/post/flipper_zero_on_linux/</link>

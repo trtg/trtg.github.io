@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-theme=""><head>
+    <title> Sebastian Ortiz | Rigol DHO914S vs Siglent 1104X-E </title>
+
+    
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.111.3"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="let&#39;s build something... or break it">
+    
+    <link rel="stylesheet"
+          href="https://www.sebortiz.com/css/style.min.bcbc7bde1d41a6366cb1e31ec2d4027a3e5218b4a9019a0ee13ff6bce65bcedf.css"
+          integrity="sha256-vLx73h1BpjZsseMewtQCej5SGLSpAZoO4T/2vOZbzt8="
+          crossorigin="anonymous"
+          type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    
+    <link rel="shortcut icon" href="https://www.sebortiz.com/favicons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.sebortiz.com/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.sebortiz.com/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.sebortiz.com/favicons/favicon-16x16.png">
+
+    <link rel="canonical" href="https://www.sebortiz.com/post/rigol_vs_siglent/">
+
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://www.sebortiz.com/js/anatole-header.min.a3fa728a9f57833a31dfb45c48caaf1e4890c8c97f07bd7133fc2359745edb5d.js"
+            integrity="sha256-o/pyip9Xgzox37RcSMqvHkiQyMl/B71xM/wjWXRe210="
+            crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Rigol DHO914S vs Siglent 1104X-E"/>
+<meta name="twitter:description" content="I recently received a Rigol DHO914S to replace the Siglent SDS-1104XE I had just ordered not long ago. The timing of the release of the Rigol was such that I ordered the Siglent and learned about the new line of compact USB-C powered Rigols a few days later. Here&rsquo;s a quick comparison table between the two scopes:
+Metric Rigol Siglent Sampling Rate 1 ADC at 1.25GS/sec 2 ADC at 1GS/s each Analog Bandwidth (un-hacked) 125Mhz 100Mhz ADC resolution 12 bits 8 bits Waveform capture rate 1,000,000 wfm/s 100,000wfm/s(normal mode) or 400,000 wfm/s(sequence mode) Screen 7&quot; 1024x600 touchscreen 7&quot; 800x480 no touch Connectivity ethernet, USB-A,USB-B, HDMI,40-pin(logic analyzer), AFG out, Aux out ethernet, USB-Ax2, USB-B,SBUS (logic analyzer), Trig out/(Pass/fail) Power supply external USB-C brick (option for battery) mains power with 3 prong plug AWG integrated external USB module Rigol Unboxing Side by side size comparison The one thing that struck me on opening the Rigol box is how amazingly small the 914S is, especially compared with the Siglent (which itself is already small)."/>
+
+</head>
+<body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+        <div class="title">
+            <img src="https://www.sebortiz.com/images/bear.png" alt="profile picture">
+            <h3 title=""><a href="/">Sebastian Ortiz</a></h3>
+            <div class="description">
+                <p>let&#39;s build something... or break it</p>
+            </div>
+        </div>
+    </div>
+    <ul class="social-links">
+        
+            <li>
+                <a href="https://linkedin.com/in/sebortiz" rel="me" aria-label="Linkedin">
+                    <i class="fa fa-2x fa-linkedin" aria-hidden="true"></i>
+                </a>
+            </li>
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Sebastian Ortiz 2023 </div>
+    </div>
+</div>
+<div class="main">
+    <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    <ul class="nav" id="navMenu">
+        
+        
+            
+            <li><a 
+                   href="/"
+                        
+                   title="">Home</a></li>
+        
+            
+            <li><a 
+                   href="/post/"
+                        
+                   title="">Posts</a></li>
+        
+            
+            <li><a 
+                   href="/about/"
+                        
+                   title="">About</a></li>
+        
+        
+        <li class="theme-switch-item">
+            <a class="theme-switch" title="Switch Theme">
+                <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+    <div class="autopagerize_page_element">
+        <div class="content">
+    <div class="post animated fadeInDown">
+        <div class="post-content">
+
+            <div class="post-title">
+                <h3>Rigol DHO914S vs Siglent 1104X-E</h3>
+                
+                    <div class="info">
+                        <em class="fa fa-sun-o"></em>
+                        <span class="date">Sun, Oct 15, 2023</span>
+                        <em class="fa fa-clock-o"></em>
+                        <span class="reading-time">5-minute read</span>
+                    </div>
+                
+            </div>
+
+            <p>I recently received a Rigol DHO914S to replace the Siglent SDS-1104XE I had just ordered not long ago. The timing of the release of the Rigol was such that I ordered the Siglent and learned about the new line of compact USB-C powered Rigols a few days later. Here&rsquo;s a quick comparison table between the two scopes:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Rigol</th>
+<th>Siglent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sampling Rate</td>
+<td>1 ADC at 1.25GS/sec</td>
+<td>2 ADC at 1GS/s each</td>
+</tr>
+<tr>
+<td>Analog Bandwidth (un-hacked)</td>
+<td>125Mhz</td>
+<td>100Mhz</td>
+</tr>
+<tr>
+<td>ADC resolution</td>
+<td>12 bits</td>
+<td>8 bits</td>
+</tr>
+<tr>
+<td>Waveform capture rate</td>
+<td>1,000,000 wfm/s</td>
+<td>100,000wfm/s(normal mode) or 400,000 wfm/s(sequence mode)</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>7&quot; 1024x600 touchscreen</td>
+<td>7&quot; 800x480 no touch</td>
+</tr>
+<tr>
+<td>Connectivity</td>
+<td>ethernet, USB-A,USB-B, HDMI,40-pin(logic analyzer), AFG out, Aux out</td>
+<td>ethernet, USB-Ax2, USB-B,SBUS (logic analyzer), Trig out/(Pass/fail)</td>
+</tr>
+<tr>
+<td>Power supply</td>
+<td>external USB-C brick (option for battery)</td>
+<td>mains power with 3 prong plug</td>
+</tr>
+<tr>
+<td>AWG</td>
+<td>integrated</td>
+<td>external USB module</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rigol-unboxing">Rigol Unboxing</h3>
+<p><img src="/images/rigol_box1.jpg" alt="Unboxing step 1">
+<img src="/images/rigol_box2.jpg" alt="Unboxing step 2">
+<img src="/images/rigol_box3.jpg" alt="Unboxing step 3">
+<img src="/images/rigol_box4.jpg" alt="Unboxing step 4"></p>
+<h3 id="side-by-side-size-comparison">Side by side size comparison</h3>
+<p>The one thing that struck me on opening the Rigol box is how amazingly small the 914S is, especially compared with the Siglent (which itself is already small).
+<img src="/images/oscilloscope_side_by_side1.jpg" alt="Side by side 1">
+<img src="/images/oscilloscope_side_by_side2.jpg" alt="Side by side 2">
+<img src="/images/oscilloscope_side_by_side3.jpg" alt="Side by side 3"></p>
+<h3 id="web-control">Web Control</h3>
+<p>The web control is a big difference functionally for me on linux between the two scopes. Something about the Siglent&rsquo;s web control doesn&rsquo;t play nice with chrome and just renders incorrectly such that clicks aren&rsquo;t handled properly and you have to scroll horizontally to see the whole window. The Rigol web control didn&rsquo;t have any rendering issues for me and for the most part just works. The one quirk I ran into is that if you use the record screen feature while the web control is on, the web control window accepts clicks but stops updating. This might be important depending on how you intend to use the scope. I&rsquo;m using it hands-on at my desk, so not much of an issue for now.</p>
+<p><img src="/images/rigol_web_control.png" alt="Rigol Web Control"></p>
+<h3 id="hdmi-output">HDMI Output</h3>
+<p>One potentially nice feature present in the Rigol, but absent from the Siglent is HDMI out. The resolution is adjustable up to 1920x1080, but basically just plug in a display and it works. To get access to that HDMI resolution menu, tap the &ldquo;About&rdquo; link in the Utility menu 3 times to enter test mode and get the &ldquo;HDMI resolution&rdquo; to appear in the &ldquo;Other&rdquo; menu. The test mode is not preserved across power cycles so you&rsquo;ll have to redo the tapping &ldquo;About&rdquo; 3 times each time you power on the scope, if you need it.</p>
+<p><img src="/images/rigol_hdmi_out.jpg" alt="Rigol HDMI output"></p>
+<h3 id="wifi-support">Wifi support</h3>
+<p>The DHO914S runs android, which means you can interact with it using adb, so connect an ethernet cable to get the scope an IP address and then just run:</p>
+<pre tabindex="0"><code>adb connect &lt;your scope&#39;s IP address&gt;:55555
+</code></pre><p>you can get the scope&rsquo;s IP address from the Utility menu, under the &ldquo;IO&rdquo; tab.</p>
+<pre tabindex="0"><code>adb ls /system/lib/modules
+</code></pre><p>reveals that the scope has a kernel module for the RT8188EU wifi adapter.
+If you then:</p>
+<pre tabindex="0"><code>adb shell
+dmesg
+</code></pre><p>you&rsquo;ll see this during the scope&rsquo;s boot logs:</p>
+<pre tabindex="0"><code>[   25.842044] =======================================================
+[   25.842233] ==== Launching Wi-Fi driver! (Powered by Rockchip) ====
+[   25.842435] =======================================================
+[   25.842949] Realtek 8188EU USB WiFi driver (Powered by Rockchip,Ver v5.2.2.3_24783.20171030) init.
+[   25.843144] [WLAN_RFKILL]: rockchip_wifi_power: 1
+[   25.843343] [WLAN_RFKILL]: rockchip_wifi_power: rfkill-wlan driver has not Successful initialized
+[   25.844232] RTW: module init start
+[   25.844434] RTW: rtl8188eu v5.2.2.3_24783.20171030
+[   25.844868] [WLAN_RFKILL]: rockchip_wifi_get_oob_irq: Enter
+[   25.845067] [WLAN_RFKILL]: rockchip_wifi_get_oob_irq: rfkill-wlan driver has not Successful initialized
+[   25.847721] bFWReady == _FALSE call reset 8051...
+</code></pre><p>Now let&rsquo;s try to get wifi connectivity working- open another shell on the scope and startup wpa_cli</p>
+<pre tabindex="0"><code>adb shell
+wpa_cli -i wlan0
+</code></pre><p>You&rsquo;ll get the wpa_cli interactive prompt:</p>
+<pre tabindex="0"><code>rk3399_rigol:/ # wpa_cli -i wlan0                                                                                                           
+wpa_cli v2.6-devel-7.1.2
+Copyright (c) 2004-2016, Jouni Malinen &lt;j@w1.fi&gt; and contributors
+
+This software may be distributed under the terms of the BSD license.
+See README for more details.
+
+
+
+Interactive mode
+&gt;
+</code></pre><p>Now that you&rsquo;re in the wpa_cli interpreter, start a wifi scan to see what SSIDs are detected, and list the results to find your desired SSID</p>
+<pre tabindex="0"><code>&gt; scan
+OK
+&gt; scan_results
+</code></pre><p>Now add a network, the command will return a network ID that you&rsquo;ll use in subsequent commands:</p>
+<pre tabindex="0"><code>&gt; add_network
+1
+</code></pre><p>From now on our network ID will be 1 because of the above command. Now we select our desired SSID:</p>
+<pre tabindex="0"><code>&gt; set_network 1 ssid &#34;my_network&#34;
+OK
+</code></pre><p>If you have an SSID with a weird special characters, you might need single quotes outside your double quotes.
+Now enter the passphrase for your SSID and enable the network, you should output indicating it&rsquo;s trying to connect to your specified SSID:</p>
+<pre tabindex="0"><code>&gt; set_network 1 psk &#34;your_passphrase_here&#34;
+OK
+&gt; enable_network 1
+OK
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=-1 state=3 BSSID=00:00:00:00:00:00 SSID=
+&lt;3&gt;CTRL-EVENT-SCAN-STARTED 
+&lt;3&gt;CTRL-EVENT-SCAN-RESULTS 
+&lt;3&gt;WPS-AP-AVAILABLE 
+&lt;3&gt;Trying to associate with 00:00:00:00:00:00 (SSID=&#39;my_network&#39; freq=2462 MHz)
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=-1 state=5 BSSID=00:00:00:00:00:00 SSID=
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=1 state=6 BSSID=00:00:00:00:00:00 SSID=my_network
+&lt;3&gt;Associated with 00:00:00:00:00:00
+&lt;3&gt;CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=1 state=7 BSSID=00:00:00:00:00:00 SSID=my_network
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=1 state=8 BSSID=00:00:00:00:00:00 SSID=my_network
+&lt;3&gt;WPA: Key negotiation completed with 00:00:00:00:00:00 [PTK=CCMP GTK=CCMP]
+&lt;3&gt;CTRL-EVENT-CONNECTED - Connection to 00:00:00:00:00:00 completed [id=1 id_str=]
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=1 state=9 BSSID=00:00:00:00:00:00 SSID=my_network
+</code></pre><p>Next select the network and save the configuration you made to keep it working the next time you power on the scope, and check the IP address you were issued:</p>
+<pre tabindex="0"><code>&gt; select_network 1
+OK
+&gt; save_config 
+OK
+&gt; status
+bssid=00:00:00:00:00:00
+freq=2462
+ssid=my_network
+id=1
+mode=station
+pairwise_cipher=CCMP
+group_cipher=CCMP
+key_mgmt=WPA2-PSK
+wpa_state=COMPLETED
+ip_address=192.168.0.107
+p2p_device_address=00:00:00:00:00:00
+address=00:00:00:00:00:00
+uuid=00000000-0000-0000-0000-000000000000
+&lt;3&gt;CTRL-EVENT-STATE-CHANGE id=1 state=9 BSSID=00:00:00:00:00:00 SSID=subway_open 2.4
+&lt;3&gt;CTRL-EVENT-CONNECTED - connection to 00:00:00:00:00:00 completed (auth) [id=1 id_str=]
+</code></pre><p>At this point you should be able to disconnect the scope&rsquo;s ethernet cable and connect to the scope&rsquo;s web interface using the new wifi IP address you found in the last command- in this example 192.168.0.107.</p>
+<h3 id="detailed-comparison">Detailed comparison</h3>
+<p>In operation, there are notable differences in using the two scopes. I saw lots of speculation online about noise levels- in my opinion neither scope is noisy, so that&rsquo;s not an issue for me. Certain features are quicker to access in the Siglent by default. Notably, out of the box zoom mode just requires a horizontal knob click on the Siglent, while by default the Rigol uses horizontal knob click to toggle vernier on and off.  It&rsquo;s possible to switch to the siglent style behavior by opening the Utility menu and then the Setup tab, and toggling the final &ldquo;fine/zoom&rdquo; switch. Annoyingly, however, this setting doesn&rsquo;t seem to get preserved across power cycles.</p>
+<p><img src="/images/fine_zoom.jpeg" alt="Fine zoom toggle"></p>
+<p>Zoom mode can also be toggled from the horizontal settings menu:</p>
+<p><img src="/images/horizontal_settings.jpeg" alt="Horizontal settings"></p>
+
+        </div>
+        <div class="post-footer">
+            <div class="info">
+                
+                
+            </div>
+        </div>
+
+        
+            
+        
+    </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/jquery.min.decb4e8fdab5cb7b76ec6470b6fb73d30c7ee8e248d7486f49007f3c525b7acb.js"
+        integrity="sha256-3stOj9q1y3t27GRwtvtz0wx&#43;6OJI10hvSQB/PFJbess="
+        crossorigin="anonymous"></script>
+
+
+
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/bundle.min.3ebad6bf39b2e7c2f899d3ed9bc97e8c0c1ead7a1b57472e3387321f673b8077.js"
+        integrity="sha256-PrrWvzmy58L4mdPtm8l&#43;jAwerXobV0cuM4cyH2c7gHc="
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript"
+        src="https://www.sebortiz.com/js/medium-zoom.min.e1c6918cbaa90022a5612f0bd71c7bf3be6d036614c5729cebfe14f7b91fa4bc.js"
+        integrity="sha256-4caRjLqpACKlYS8L1xx7875tA2YUxXKc6/4U97kfpLw="
+        crossorigin="anonymous"></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-179545567-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</body>
+
+</html>
